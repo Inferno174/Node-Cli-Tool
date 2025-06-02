@@ -1,0 +1,6 @@
+const __NAME__ = Object.freeze({
+  OPTION_ONE: 'OPTION_ONE',
+  OPTION_TWO: 'OPTION_TWO',
+});
+
+module.exports = __NAME__;

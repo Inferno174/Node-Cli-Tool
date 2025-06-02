@@ -1,0 +1,6 @@
+function __NAME__(value) {
+  // Modify and return value
+  return value;
+}
+
+module.exports = __NAME__;

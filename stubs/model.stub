@@ -1,0 +1,13 @@
+const db = require('../config/database');
+class __NAME__ {
+  constructor(data = {}) {
+    this.id = data.id || null;
+    this.created_at = data.created_at || new Date();
+  }
+
+  static async findAll() {
+    // Add database logic
+  }
+}
+
+module.exports = __NAME__;

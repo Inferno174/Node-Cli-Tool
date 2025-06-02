@@ -1,0 +1,8 @@
+function __NAME__() {
+  return {
+    name: 'Sample Name',
+    created_at: new Date(),
+  };
+}
+
+module.exports = __NAME__;

@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10"
+  },
+  "bin": {
+    "create": "cli.js"
+  },
+  "name": "laravel-clis",
+  "version": "1.0.2",
+  "main": "cli.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "laravel",
+    "cli",
+    "generator",
+    "scaffold",
+    "nodejs",
+    "mvc",
+    "laravel commands in node",
+    "cli commands",
+    "file generator"
+  ],
+  "author": "Jabez Nehemiah L",
+  "license": "MIT",
+  "description": "A package to create controller , models , views , helpers , migrations , factories , middlewares from CLI like laravel "
+}

@@ -1,0 +1,11 @@
+class __NAME__ {
+  index(req, res) {
+    res.send('__NAME__ index');
+  }
+
+  show(req, res) {
+    res.send('__NAME__ show');
+  }
+}
+
+module.exports = new __NAME__();

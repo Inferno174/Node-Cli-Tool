@@ -1,0 +1,10 @@
+const { program } = require('commander');
+
+program
+  .command('__NAME__')
+  .description('Execute __NAME__ command')
+  .action(() => {
+    console.log('__NAME__ command executed');
+  });
+
+module.exports = program;

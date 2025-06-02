@@ -1,0 +1,7 @@
+function __NAME__(req, res, next) {
+  // TODO: implement your logic
+  console.log('__NAME__ middleware executed');
+  next();
+}
+
+module.exports = __NAME__;

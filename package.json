@@ -11,8 +11,8 @@
   "bin": {
     "create": "cli.js"
   },
-  "name": "laravel-clis",
-  "version": "1.0.2",
+  "name": "laranode-clis",
+  "version": "1.0.3",
   "main": "cli.js",
   "devDependencies": {},
   "scripts": {
@@ -31,5 +31,13 @@
   ],
   "author": "Jabez Nehemiah L",
   "license": "MIT",
-  "description": "A package to create controller , models , views , helpers , migrations , factories , middlewares from CLI like laravel "
+  "description": "A package to create controller , models , views , helpers , migrations , factories , middlewares from CLI like laravel ",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Inferno174/Node-Cli-Tool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Inferno174/Node-Cli-Tool/issues"
+  },
+  "homepage": "https://github.com/Inferno174/Node-Cli-Tool/blob/main/README.md"
 }

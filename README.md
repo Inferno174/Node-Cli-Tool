@@ -8,3 +8,8 @@ First, install it globally (after running `npm publish` or locally with `npm lin
 
 ```bash
 npm install -g laravel-clis
+
+
+## To Use This Package 
+
+create <type> <filepath>

@@ -8,8 +8,8 @@ const stubDir = path.join(__dirname, 'stubs');
 
 const availableTypes = fs.existsSync(stubDir)
   ? fs.readdirSync(stubDir)
-    .filter(file => file.endsWith('.stub'))
-    .map(file => file.replace('.stub', ''))
+      .filter(file => file.endsWith('.stub'))
+      .map(file => file.replace('.stub', ''))
   : [];
 
 function listAvailableCommands() {
@@ -17,18 +17,12 @@ function listAvailableCommands() {
   availableTypes.forEach(type => {
     console.log(`  ${type.padEnd(15)} -> Creates a ${type}.js`);
   });
-  console.log(`\nUsage: mycli <type> <FilePath>\n`);
-}
-
-const userArg = process.argv[2];
-if (!userArg || userArg === 'help' || userArg === '--help') {
-  listAvailableCommands();
-  process.exit(0);
+  console.log(`\nUsage: create <type> <FilePath>\n`);
 }
 
 function createFile(type, inputPath) {
   if (!availableTypes.includes(type)) {
-    console.error(`\n❌ Stub not found for type: "${type}"`);
+    console.error(`\n Stub not found for type: "${type}"`);
     listAvailableCommands();
     return;
   }
@@ -36,11 +30,15 @@ function createFile(type, inputPath) {
   const stubPath = path.join(stubDir, `${type}.stub`);
   const parts = inputPath.split(/[\/\\]/);
   const fileName = parts.pop();
-  const baseDir = path.join(__dirname, `${type}s`);
 
+  
+  const baseDir = path.join(process.cwd(), `${type}s`);
+
+  
   if (!fs.existsSync(baseDir)) {
-    fs.mkdirSync(baseDir);
+    fs.mkdirSync(baseDir, { recursive: true });
   }
+
 
   const targetDir = parts.length > 0
     ? path.join(baseDir, ...parts)
@@ -50,18 +48,19 @@ function createFile(type, inputPath) {
     fs.mkdirSync(targetDir, { recursive: true });
   }
 
+
   const stubContent = fs.readFileSync(stubPath, 'utf8').replace(/__NAME__/g, fileName);
   const filePath = path.join(targetDir, `${fileName}.js`);
 
   fs.writeFileSync(filePath, stubContent);
-  console.log(`✅ ${type} created successfully: ${filePath}`);
+  console.log(`${type} created successfully: ${filePath}`);
 }
 
 program
-  .name('mycli')
+  .name('create')
   .usage('<type> <FilePath>')
   .description('Generate files from stub templates based on type')
-  .argument('<type>', 'Type of file to create (controller, model, view, etc.)')
+  .argument('<type>', 'Type of file to create (controller, model, etc.)')
   .argument('[path]', 'File path relative to the base type directory')
   .action((type, inputPath) => {
     if (!inputPath) {

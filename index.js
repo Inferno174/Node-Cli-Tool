@@ -22,7 +22,7 @@ function listAvailableCommands() {
 
 function createFile(type, inputPath) {
   if (!availableTypes.includes(type)) {
-    console.error(`\n Stub not found for type: "${type}"`);
+    console.error(`\nStub not found for type: "${type}"`);
     listAvailableCommands();
     return;
   }
@@ -31,14 +31,10 @@ function createFile(type, inputPath) {
   const parts = inputPath.split(/[\/\\]/);
   const fileName = parts.pop();
 
-  
   const baseDir = path.join(process.cwd(), `${type}s`);
-
-  
   if (!fs.existsSync(baseDir)) {
     fs.mkdirSync(baseDir, { recursive: true });
   }
-
 
   const targetDir = parts.length > 0
     ? path.join(baseDir, ...parts)
@@ -47,7 +43,6 @@ function createFile(type, inputPath) {
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });
   }
-
 
   const stubContent = fs.readFileSync(stubPath, 'utf8').replace(/__NAME__/g, fileName);
   const filePath = path.join(targetDir, `${fileName}.js`);
@@ -77,5 +72,10 @@ program
       createFile(type.toLowerCase(), inputPath);
     }
   });
+
+if (process.argv.length <= 2) {
+  listAvailableCommands();
+  process.exit(0);
+}
 
 program.parse(process.argv);
